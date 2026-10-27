@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Independent cybersecurity consulting to help organisations reduce risk, strengthen security and respond with confidence.">
+  <title>Edge of Precision | Security with clarity</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202b28;
+      --muted: #64716c;
+      --green: #23845b;
+      --green-dark: #176844;
+      --green-pale: #e5f3eb;
+      --grey-pale: #f3f5f4;
+      --line: #dfe6e2;
+      --white: #ffffff;
+      --radius: 22px;
+      --shadow: 0 18px 45px rgba(26, 54, 42, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 5;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(223,230,226,.9);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.04em; text-decoration: none; font-size: 1.1rem; }
+    .brand-mark {
+      display: grid; place-items: center; width: 40px; height: 40px;
+      border-radius: 13px; color: white; background: var(--green); font-size: 1.2rem;
+      box-shadow: 0 7px 16px rgba(35,132,91,.24);
+    }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 650; }
+    .nav-links a:hover { color: var(--green); }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 12px 19px; border-radius: 12px; border: 1px solid transparent;
+      background: var(--green); color: white !important; text-decoration: none; font-weight: 750;
+      box-shadow: 0 8px 18px rgba(35,132,91,.18); transition: transform .18s, background .18s;
+    }
+    .button:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .button.secondary { background: white; color: var(--ink) !important; border-color: var(--line); box-shadow: none; }
+    .button.secondary:hover { background: var(--grey-pale); }
+    .hero {
+      overflow: hidden; position: relative; padding: 92px 0 84px;
+      background: radial-gradient(ellipse at 83% 20%, rgba(190,231,207,.72), transparent 35%),
+                  radial-gradient(ellipse at 8% 80%, rgba(224,231,227,.9), transparent 36%),
+                  #f8fbf9;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 55px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-size: .78rem; font-weight: 850; text-transform: uppercase; letter-spacing: .12em; }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+    h1 { max-width: 720px; margin: 18px 0; font-size: clamp(2.65rem, 5vw, 4.45rem); line-height: 1.06; letter-spacing: -.065em; }
+    h1 span { color: var(--green); }
+    .hero p { max-width: 610px; margin: 0; color: var(--muted); font-size: 1.12rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+    .trust-line { margin-top: 27px; color: #68766f; font-size: .88rem; }
+    .trust-line strong { color: var(--ink); }
+    .visual { position: relative; min-height: 360px; display: grid; place-items: center; }
+    .orb { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: linear-gradient(145deg, #d5e9dc, #a9d8bd); }
+    .security-panel {
+      position: relative; width: min(100%, 400px); padding: 24px;
+      border: 1px solid rgba(255,255,255,.95); border-radius: 24px;
+      background: rgba(255,255,255,.92); box-shadow: var(--shadow); transform: rotate(1.5deg);
+    }
+    .panel-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .panel-title { font-weight: 800; letter-spacing: -.03em; }
+    .status { color: #176844; background: #e1f5e9; padding: 5px 9px; border-radius: 999px; font-size: .72rem; font-weight: 800; white-space: nowrap; }
+    .panel-label { margin: 20px 0 10px; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .08em; }
+    .security-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+    .item-icon { flex: 0 0 42px; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: var(--green-pale); color: var(--green-dark); font-size: 1.2rem; }
+    .item-name { font-weight: 750; }
+    .item-sub { color: var(--muted); font-size: .78rem; }
+    .check { margin-left: auto; color: var(--green); font-weight: 900; font-size: 1.1rem; }
+    section { padding: 82px 0; }
+    .section-head { max-width: 680px; margin-bottom: 35px; }
+    .section-head h2, .approach-copy h2 { margin: 10px 0 12px; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.13; letter-spacing: -.05em; }
+    .section-head p, .approach-copy p { margin: 0; color: var(--muted); font-size: 1.04rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: white; transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card-icon { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 15px; background: var(--green-pale); color: var(--green-dark); font-size: 1.4rem; }
+    .card h3 { margin: 20px 0 8px; font-size: 1.18rem; letter-spacing: -.025em; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .approach { background: var(--grey-pale); }
+    .approach-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 65px; align-items: start; }
+    .approach-copy p { margin-bottom: 24px; }
+    .steps { display: grid; gap: 13px; }
+    .step { display: flex; gap: 17px; padding: 20px; border: 1px solid var(--line); border-radius: 17px; background: white; }
+    .step-num { flex: 0 0 37px; height: 37px; display: grid; place-items: center; border-radius: 12px; background: var(--green-dark); color: white; font-weight: 800; }
+    .step h3 { margin: 0 0 4px; font-size: 1rem; }
+    .step p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .contact { padding: 78px 0; }
+    .contact-box {
+      display: grid; grid-template-columns: 1fr .9fr; gap: 40px; padding: 42px;
+      border-radius: 26px; background: #26332e; color: white;
+    }
+    .contact-box h2 { margin: 0 0 8px; font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -.05em; line-height: 1.15; }
+    .contact-box .intro { margin: 0; max-width: 580px; color: #d0dbd5; }
+    .contact-details { display: grid; gap: 13px; align-content: center; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 12px; color: #e5eee9; }
+    .contact-detail .symbol { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border-radius: 10px; background: rgba(255,255,255,.1); color: #b5e9ca; }
+    .contact-detail small { display: block; color: #b9c9c0; font-size: .76rem; }
+    .contact-detail a { text-decoration: none; overflow-wrap: anywhere; }
+    .contact-detail a:hover { text-decoration: underline; }
+    .contact-cta { margin-top: 22px; }
+    .contact-cta .button { background: #bde8cd; color: #173b29 !important; box-shadow: none; }
+    .contact-cta .button:hover { background: #a5dbb8; }
+    footer { padding: 25px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+    @media (max-width: 820px) {
+      .hero-grid, .approach-grid { grid-template-columns: 1fr; gap: 35px; }
+      .hero { padding: 65px 0 45px; }
+      .visual { min-height: 325px; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .contact-box { grid-template-columns: 1fr; gap: 25px; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      .nav { min-height: 68px; }
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.button) { display: none; }
+      .nav-links .button { padding: 10px 12px; font-size: .85rem; }
+      .brand { font-size: .95rem; }
+      .brand-mark { width: 34px; height: 34px; }
+      h1 { font-size: 2.7rem; }
+      section { padding: 62px 0; }
+      .cards { grid-template-columns: 1fr; }
+      .contact-box { padding: 28px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .security-panel { padding: 19px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Edge of Precision home">
+        <span class="brand-mark" aria-hidden="true">E</span>
+        Edge of Precision
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a class="button" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Independent cybersecurity consulting</div>
+          <h1>Stronger security.<br><span>Greater confidence.</span></h1>
+          <p>Practical cybersecurity advice to help your organisation understand risk, protect important information and make informed security decisions—without unnecessary jargon.</p>
+          <div class="hero-actions">
+            <a class="button" href="#contact">Book an initial discussion <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#services">Explore services</a>
+          </div>
+          <div class="trust-line"><strong>Risk-led advice.</strong> Clear recommendations. Security that fits your organisation.</div>
+        </div>
+        <div class="visual" aria-label="Illustration of a cybersecurity assessment dashboard">
+          <div class="orb" aria-hidden="true"></div>
+          <div class="security-panel">
+            <div class="panel-top">
+              <div class="panel-title">Security overview</div>
+              <span class="status">● Proactive approach</span>
+            </div>
+            <div class="panel-label">KEY AREAS TO REVIEW</div>
+            <div class="security-item">
+              <div class="item-icon" aria-hidden="true">⌑</div>
+              <div><div class="item-name">Risk assessment</div><div class="item-sub">Understand your exposure</div></div>
+              <span class="check" aria-label="Focus area">✓</span>
+            </div>
+            <div class="security-item">
+              <div class="item-icon" aria-hidden="true">♙</div>
+              <div><div class="item-name">Access & identity</div><div class="item-sub">Review who has access</div></div>
+              <span class="check" aria-label="Focus area">✓</span>
+            </div>
+            <div class="security-item">
+              <div class="item-icon" aria-hidden="true">⛨</div>
+              <div><div class="item-name">Incident readiness</div><div class="item-sub">Prepare for the unexpected</div></div>
+              <span class="check" aria-label="Focus area">✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Consulting services</div>
+          <h2>Security built around your needs.</h2>
+          <p>Understand where you stand, prioritise what matters most and build a realistic plan to improve your organisation's cybersecurity.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⌑</div>
+            <h3>Cybersecurity risk reviews</h3>
+            <p>Identify key risks, review current practices and receive clear, prioritised recommendations for improvement.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">♙</div>
+            <h3>Security strategy & policies</h3>
+            <p>Develop practical security policies, access-control guidance and improvement roadmaps suited to your business.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⛨</div>
+            <h3>Incident readiness & awareness</h3>
+            <p>Help your team recognise common threats, prepare response procedures and understand their role in protecting information.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach" id="approach">
+      <div class="wrap approach-grid">
+        <div class="approach-copy">
+          <div class="eyebrow">A clear process</div>
+          <h2>Expert guidance, in plain English.</h2>
+          <p>Cybersecurity doesn't have to feel overwhelming. The focus is on understanding your environment, explaining the risks clearly and helping you take the next sensible step.</p>
+          <a class="button secondary" href="#contact">Discuss your requirements <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-num">1</div>
+            <div><h3>Discover</h3><p>Discuss your organisation, existing controls, concerns and business priorities.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-num">2</div>
+            <div><h3>Assess & prioritise</h3><p>Review the agreed areas and explain findings in a clear, actionable format.</p></div>
+          </article>
+          <article class="step">
+            <div class="step-num">3</div>
+            <div><h3>Improve with confidence</h3><p>Build a practical plan with recommendations ordered by risk, effort and business value.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div>
+            <div class="eyebrow" style="color:#bde8cd">Get in touch</div>
+            <h2>Let's talk about your security.</h2>
+            <p class="intro">Whether you need an independent review, clearer security policies or help planning your next steps, start with a conversation about your goals.</p>
+            <div class="contact-cta"><a class="button" href="mailto:contact@example.com?subject=Cybersecurity%20consulting%20enquiry">Send an enquiry <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="contact-details">
+            <!-- Replace the sample email and phone details below with your real business contact information. -->
+            <div class="contact-detail">
+              <span class="symbol" aria-hidden="true">✉</span>
+              <div><small>Email</small><a href="mailto:contact@example.com">contact@example.com</a></div>
+            </div>
+            <div class="contact-detail">
+              <span class="symbol" aria-hidden="true">⌕</span>
+              <div><small>Phone</small><a href="tel:+61000000000">+61 (0) 000 000 000</a></div>
+            </div>
+            <div class="contact-detail">
+              <span class="symbol" aria-hidden="true">◷</span>
+              <div><small>Availability</small><span>By appointment</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© 2026 Edge of Precision. All rights reserved.</div>
+      <div>Independent cybersecurity consulting.</div>
+    </div>
+  </footer>
+</body>
+</html>
